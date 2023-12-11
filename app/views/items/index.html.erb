@@ -1,0 +1,14 @@
+<h1>Items</h1>
+
+<ul>
+    <% @items.each do |item| %>
+        <li style="display:flex; gap:1rem; margin-bottom:0.25rem">
+            <strong><%= item.name %></strong>
+            <%= "deleted at: #{item.deleted_at || 'NIL'}" %>
+            <%= button_to '❌', soft_delete_item_path(item), method: :patch %>
+            <%# button_to '🔄', restore_item_path(item), method: :patch %>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to "New Item", new_item_path %>
